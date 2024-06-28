@@ -1,0 +1,254 @@
+/* #region General*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background-image: url('./images/main_bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+header,
+footer {
+  padding: 40px;
+}
+
+/* #endregion */
+
+
+
+
+/* #region Header */
+h1 {
+  text-align: center;
+  font-size: 3.5rem;
+}
+
+/* #endregion */
+
+
+/* #region Main */
+.container {
+  /* Center the list*/
+  max-width: 950px;
+  margin: 0.5rem auto;
+
+  /* The space inside the border */
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+
+  /* Border style */
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.329);
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.420);
+}
+
+.people_amount {
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.400);
+  padding-left: 0.3rem;
+}
+
+.search_bar input {
+  /* Search box */
+  width: 240px;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  margin-bottom: 1rem;
+
+  /* Search image*/
+  background-image: url('./images/search.png');
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+}
+
+.search_bar,
+.contact_item {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.350);
+  /* Space between each row */
+  padding: 17px 0;
+}
+
+.search_bar,
+.contact_item:last-child {
+  /* Remove first and last border top */
+  border-bottom: none;
+}
+
+.contact_img img {
+  /* Circle the image */
+  border-radius: 50%;
+  width: 85px;
+}
+
+.contact_info {
+  /* Space between name and image */
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.contact_name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.btns img {
+  width: 22px;
+  cursor: pointer;
+}
+
+.btns button {
+  /* Remove buttons defualt style */
+  background: none;
+  border: none;
+  /* Space between each button icon */
+  margin-left: 22px;
+}
+
+/* #endregion */
+
+
+/* #region Footer */
+footer {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* #endregion */
+
+
+
+
+/* #region Responsive */
+
+/* Laptop  ,Landscape, Large Screens */
+@media screen and (max-width:952px) {
+  .container {
+    width: 98%;
+    border-radius: 0.8rem;
+  }
+
+  .contact_name {
+    font-size: 1.4rem;
+  }
+
+  .container {
+    padding: 1.8rem 0.5rem 0.8rem 0.5rem;
+  }
+
+  .contact_img img {
+    width: 65px;
+  }
+
+  .contact_info {
+    gap: 9px;
+  }
+
+  .btns img {
+    width: 20px;
+  }
+
+  .btns button {
+    /* Space between each button-icon */
+    margin-left: 13px;
+  }
+}
+
+/* Tablet, iPad Screens  */
+@media screen and (max-width:535px) {
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .people_amount {
+    font-size: 1.2rem;
+  }
+
+  .search_bar input {
+    /* Search box */
+    width: 170px;
+    font-size: 0.9rem;
+
+    /* Search image*/
+    background-size: 15px;
+  }
+
+  .contact_item,
+  .search_bar {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .contact_name {
+    font-size: 1.1rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+
+}
+
+/*  Mobile L, M, S -- Screens */
+@media screen and (max-width:460px) {
+
+  .contact_item,
+  .search_bar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .people_amount {
+    font-size: 1rem;
+  }
+
+  .search_bar input {
+    width: 160px;
+    font-size: 0.8rem;
+  }
+
+  .contact_img img {
+    width: 52px;
+  }
+
+  .contact_name {
+    font-size: 1rem;
+  }
+
+  .btns img {
+    /* Button icons size*/
+    width: 16px;
+  }
+
+  .btns button {
+    /* Space between each button-icon */
+    margin-left: 5px;
+  }
+}
+
+/* #endregion */
