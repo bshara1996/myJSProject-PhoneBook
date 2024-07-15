@@ -5,160 +5,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Book | Home</title>
-  <link href="./styles.css" rel="stylesheet">
-  <link rel="icon" href="images/phone_logo.png" type="image/icon">
+  <link rel="stylesheet" href="styles.css">
 
+  <link rel="icon" href="images/phone_logo.png" type="image/icon">
 </head>
 
-
-
 <body>
-
   <header>
     <h1>Phone Book</h1>
   </header>
 
-
   <main>
-
     <div class="container">
 
-      <span class="people_amount">8 people</span>
+      <!-- Control Row -->
+      <p id="peopleAmount" class="people-amount"> <!--People Amount gets from script equals array length--> </p>
+      <div class="search-bar">
+        <div><input type="text" placeholder="Search..."></div>
+        <div class="btns">
+          <button class="add-contact-btn" onclick="openPopup('addContactModal')"> <img
+              src="./images/add_contact_btn.png" alt="add contact"></button>
+          <button class="delete-all-btn" onclick="deleteAllContacts()"> <img src="./images/delete_all_btn.png"
+              alt="delete all"></button>
+        </div>
+      </div>
 
-      <ul class="contact_list">
-
-        <li class="search_bar">
-          <input type="text" placeholder="Search...">
-
-          <div class="btns">
-            <button class="add_contact_btn"> <img src="./images/add_contact_btn.png" alt="add contact"></button>
-            <button class="edit_btn"> <img src="./images/delete_all_btn.png" alt="delete all"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/heitor_verdifotos.png" alt="Heitor Verdifotos"> </div>
-            <div class="contact_name">Heitor Verdifotos</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/hester_hogan.png" alt="Hester Hogan"> </div>
-            <div class="contact_name">Hester Hogan</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/gabriel_apereir.png" alt="Gabriel Apereir"> </div>
-            <div class="contact_name">Gabriel Apereir</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/simon_robben.png" alt="Simon Robben"> </div>
-            <div class="contact_name">Simon Robben</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/dan_xavier.png" alt="Dan Xavier"> </div>
-            <div class="contact_name">Dan Xavier</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/gabriel_miller.png" alt="Gabriel Miller"> </div>
-            <div class="contact_name">Gabriel Miller</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/marcelo_chagas.png" alt="Marcelo Chagas"> </div>
-            <div class="contact_name">Marcelo Chagas</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
-
-        <li class="contact_item">
-          <div class="contact_info">
-            <div class="contact_img"> <img src="./images/bruno_feitosa.png" alt="Bruno Feitosa"> </div>
-            <div class="contact_name">Bruno Feitosa</div>
-          </div>
-
-          <div class="btns">
-            <button class="info_btn"> <img src="./images/info_btn.png" alt="info"> </button>
-            <button class="edit_btn"> <img src="./images/edit_btn.png" alt="edit"> </button>
-            <button class="delete_btn"> <img src="./images/delete_btn.png" alt="delet contact"> </button>
-          </div>
-        </li>
-
+      <!-- The Contacts List -->
+      <ul class="contact-list" id="contactList">
+        <!-- Contacts will be added here from Script dynamically-->
       </ul>
+
     </div>
   </main>
-
 
   <footer>
     <p>All Rights Reserved Bshara © 2024</p>
   </footer>
 
 
-  <script src="scrips.js"></script>
+  <!-- Contact Info Popup -->
+  <div id="infoContactModal" class="popup" onclick="closePopup(event, 'infoContactModal')">
+    <div class="window-style">
+      <button class="close-btn" onclick="closePopup(event, 'infoContactModal')">&times;</button>
+      <div id="userDetailsContainer" class="user-details">
+        <!-- Contact details will be added here from Script in popup -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!----------------------------------------------------------------------------------------------------------------------------->
+  <!-- Add Contact Popup -->
+  <div id="addContactModal" class="popup" onclick="closePopup(event, 'addContactModal')">
+    <div class="window-style">
+      <button class="close-btn" onclick="closePopup(event, 'addContactModal')">&times;</button>
+      <h2>Add Contact</h2>
+      <form>
+        <div class="form-group">
+          <label for="newContactName">Name:<span class="star">*</span></label>
+          <input type="text" id="newContactName" required>
+        </div>
+        <div class="form-group">
+          <label for="newContactPhone">Phone:<span class="star">*</span></label>
+          <input type="text" id="newContactPhone" required>
+        </div>
+        <div class="form-group">
+          <label for="newContactAddress">Address:</label>
+          <input type="text" id="newContactAddress">
+        </div>
+        <div class="form-group">
+          <label for="newContactEmail">Email:</label>
+          <input type="email" id="newContactEmail">
+        </div>
+        <div class="form-group">
+          <label for="newContactAge">Age:</label>
+          <input type="text" id="newContactAge">
+        </div>
+        <div class="form-group">
+          <label for="image-url">Image URL:</label>
+          <input type="text" name="image-url" value="https://i.pravatar.cc/300">
+        </div>
+        <div class="form-group">
+          <textarea id="newContactMessage" placeholder="Your message" rows="5" cols="37"></textarea>
+        </div>
+        <button type="button" class="btn-save" onclick="saveNewContact()">Save</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Edit Contact Popup -->
+  <div id="editContactModal" class="popup" onclick="closePopup(event, 'editContactModal')">
+    <div class="window-style">
+      <button class="close-btn" onclick="closePopup(event, 'editContactModal')">&times;</button>
+      <h2>Edit Contact</h2>
+      <form>
+        <div class="form-group">
+          <label for="editContactName">Name:<span class="star">*</span></label>
+          <input type="text" id="editContactName" required>
+        </div>
+        <div class="form-group">
+          <label for="editContactPhone">Phone:<span class="star">*</span></label>
+          <input type="text" id="editContactPhone" required>
+        </div>
+        <div class="form-group">
+          <label for="editContactAddress">Address:</label>
+          <input type="text" id="editContactAddress">
+        </div>
+        <div class="form-group">
+          <label for="editContactEmail">Email:</label>
+          <input type="email" id="editContactEmail">
+        </div>
+        <div class="form-group">
+          <label for="editContactAge">Age:</label>
+          <input type="text" id="editContactAge">
+        </div>
+        <div class="form-group">
+          <label for="image-url">Image URL:</label>
+          <input type="text" name="image-url" value="https://i.pravatar.cc/300">
+        </div>
+        <div class="form-group">
+          <textarea id="editContactMessage" placeholder="Your message" rows="5" cols="37"></textarea>
+        </div>
+        <button type="button" class="btn-save" onclick="saveEditedContact()">Save</button>
+      </form>
+    </div>
+  </div>
+  <!----------------------------------------------------------------------------------------------------------------------------->
+
+  <button class="toggleDarktBtn" onclick="toggleMode()">Dark Mode</button>
+
+  <script src="scripts.js"></script>
 </body>
 
 </html>
