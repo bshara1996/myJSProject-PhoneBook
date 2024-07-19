@@ -21,12 +21,16 @@
       <!-- Control Row -->
       <p id="peopleAmount" class="people-amount"> <!--People Amount gets from script equals array length--> </p>
       <div class="search-bar">
-        <div><input type="text" placeholder="Search..."></div>
+        <div>
+          <input type="text" id="searchInput" placeholder="Search..." oninput="searchContacts()">
+        </div>
         <div class="btns">
-          <button class="add-contact-btn" onclick="openPopup('addContactModal')"> <img
-              src="./images/add_contact_btn.png" alt="add contact"></button>
-          <button class="delete-all-btn" onclick="deleteAllContacts()"> <img src="./images/delete_all_btn.png"
-              alt="delete all"></button>
+          <button class="add-contact-btn" onclick="openPopup('addContactModal')">
+            <img src="./images/add_contact_btn.png" alt="add contact">
+          </button>
+          <button class="delete-all-btn" onclick="deleteAllContacts()">
+            <img src="./images/delete_all_btn.png" alt="delete all">
+          </button>
         </div>
       </div>
 
@@ -54,10 +58,6 @@
   </div>
 
 
-
-
-
-  <!----------------------------------------------------------------------------------------------------------------------------->
   <!-- Add Contact Popup -->
   <div id="addContactModal" class="popup" onclick="closePopup(event, 'addContactModal')">
     <div class="window-style">
@@ -81,17 +81,13 @@
           <input type="email" id="newContactEmail">
         </div>
         <div class="form-group">
-          <label for="newContactAge">Age:</label>
-          <input type="text" id="newContactAge">
-        </div>
-        <div class="form-group">
           <label for="image-url">Image URL:</label>
-          <input type="text" name="image-url" value="https://i.pravatar.cc/300">
+          <input type="text" name="image-url" id="new-image-url" placeholder="Default Picsum Image">
         </div>
         <div class="form-group">
           <textarea id="newContactMessage" placeholder="Your message" rows="5" cols="37"></textarea>
         </div>
-        <button type="button" class="btn-save" onclick="saveNewContact()">Save</button>
+        <button type="submit" class="btn-save" onclick="saveNewContact()">Save</button>
       </form>
     </div>
   </div>
@@ -120,12 +116,8 @@
           <input type="email" id="editContactEmail">
         </div>
         <div class="form-group">
-          <label for="editContactAge">Age:</label>
-          <input type="text" id="editContactAge">
-        </div>
-        <div class="form-group">
           <label for="image-url">Image URL:</label>
-          <input type="text" name="image-url" value="https://i.pravatar.cc/300">
+          <input type="text" name="image-url" id="edit-image-url">
         </div>
         <div class="form-group">
           <textarea id="editContactMessage" placeholder="Your message" rows="5" cols="37"></textarea>
@@ -134,7 +126,6 @@
       </form>
     </div>
   </div>
-  <!----------------------------------------------------------------------------------------------------------------------------->
 
   <button class="toggleDarktBtn" onclick="toggleMode()">Dark Mode</button>
 
