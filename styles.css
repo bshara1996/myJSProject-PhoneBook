@@ -174,7 +174,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-
+  max-width: 97%;
   padding: 25px 60px 50px 60px;
 }
 
@@ -197,7 +197,7 @@ h1 {
 /* #endregion */
 
 
-/* #region Add Contact Modal*/
+/* #region Add +Edit Contact Modal*/
 /******************************
 ******************************/
 h2 {
@@ -210,13 +210,12 @@ h2 {
   color: red;
 }
 
+
 .form-group {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   padding-bottom: 15px;
-
-  /*Size of the labels*/
   font-size: 1.4rem;
   font-family: 'Georgia';
 }
@@ -365,6 +364,13 @@ footer {
 
 /* Tablet, iPad Screens  */
 @media screen and (max-width:535px) {
+  .close-btn {
+    width: 25px;
+    height: 25px;
+    font-size: 1.8rem;
+    top: 8px;
+    right: 8px;
+  }
 
   h1 {
     font-size: 2.5rem;
@@ -435,6 +441,38 @@ footer {
     /* Space between each button-icon */
     margin-left: 5px;
   }
+
+
+  /*For Java Script add-remove class*/
+  .bg-hover {
+    border-radius: 0.5rem;
+    padding: 0rem;
+  }
+
+
+  .window-style {
+    padding: 15px;
+  }
+
+  .form-group {
+    align-items: normal;
+
+    /* labels and inputs vertically on smaller screens */
+    flex-direction: column;
+  }
+
+  .user-info p {
+    font-size: 1.2rem;
+    padding-top: 12px;
+  }
+
+  .user-image img {
+    width: 85px;
+    /* Smaller width for tablets */
+    margin-bottom: 15px;
+    /* Adjust bottom margin for smaller screens */
+  }
+
 }
 
 /* #endregion */
