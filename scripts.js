@@ -5,7 +5,7 @@ const contacts = [
   {
     imageUrl: "./images/bruno_feitosa.png",
     name: "Bruno Feitosa",
-    phone: "123-456-7890",
+    phone: "1234567890",
     address: "123 Country Street",
     email: "bruno.feitosa@example.com",
     message: "Hello!"
@@ -13,7 +13,7 @@ const contacts = [
   {
     imageUrl: "./images/gabriel_miller.png",
     name: "Gabriel Miller",
-    phone: "987-654-3210",
+    phone: "9876543210",
     address: "456  Country Street",
     email: "gabriel.miller@example.com",
     message: "Hi There"
@@ -21,7 +21,7 @@ const contacts = [
   {
     imageUrl: "./images/heitor_verdifotos.png",
     name: "Heitor Verdifotos",
-    phone: "123-456-5244",
+    phone: "1234565244",
     address: "789 Country Street",
     email: "heitor.verdifotos@example.com",
     message: "Busy"
@@ -29,7 +29,7 @@ const contacts = [
   {
     imageUrl: "./images/gabriel_apereir.png",
     name: "Heitor Verdifotos",
-    phone: "875-456-6487",
+    phone: "8754566487",
     address: "257 Country Street",
     email: "gabriel.apereir@example.com",
     message: "Feel Free To Call"
@@ -37,7 +37,7 @@ const contacts = [
   {
     imageUrl: "./images/simon_robben.png",
     name: "Simon Robben",
-    phone: "875-456-6487",
+    phone: "8754566487",
     address: "450 Country Street",
     email: "simon.robben@example.com",
     message: ""
@@ -45,7 +45,7 @@ const contacts = [
   {
     imageUrl: "./images/dan_xavier.png",
     name: "Dan Xavier",
-    phone: "457-922-5821",
+    phone: "4579225821",
     address: "",
     email: "",
     message: ""
@@ -53,7 +53,7 @@ const contacts = [
   {
     imageUrl: "./images/hester_hogan.png",
     name: "Hester Hogan",
-    phone: "204-750-8001",
+    phone: "2047508001",
     address: "",
     email: "hester.hogan@example.com",
     message: ""
@@ -61,7 +61,7 @@ const contacts = [
   {
     imageUrl: "./images/marcelo_chagas.png",
     name: "Marcelo Chagas",
-    phone: "872-885-2172",
+    phone: "8728852172",
     address: "442 Country Street",
     email: "",
     message: ""
@@ -194,7 +194,6 @@ function renderFilteredContacts(filteredContacts) {
 
 
 
-
 /**
  * Opens popup window according to ID
  * 
@@ -203,7 +202,6 @@ function renderFilteredContacts(filteredContacts) {
 function openPopup(id) {
   document.getElementById(id).style.display = 'flex';
 }
-
 
 /**
  * Closes a popup window when click on close button or based on the event
@@ -218,8 +216,12 @@ function closePopup(event, id) {
 }
 
 
+
 /**
- * Deletes all contacts from array after user confirmation.
+ * Deletes all contacts from the `contacts` array after user confirmation.
+ * 
+ * @returns {void} - This function does not return a value.
+ * 
  */
 function deleteAllContacts() {
   let question = confirm("Delete All Contacts?");
@@ -242,8 +244,13 @@ function deleteContact(index) {
   }
 }
 
+
+
 /**
- * Toggles dark mode effect for the website.
+ * Toggles between dark mode and light mode for the website.
+ * 
+ * @returns {void} - This function does not return a value.
+ * 
  */
 function toggleMode() {
   // Update body background color for dark mode
@@ -275,7 +282,8 @@ function toggleMode() {
 
 
 /**
- * Displays detailed information about a specific contact in popup.
+ * Displays detailed information about a specific contact in popup
+ * 
  * This function called by renderContacts func from INFO BTN
  * 
  * @param {number} index - The index of the contact to display details for.
@@ -307,14 +315,94 @@ function showContactDetails(index) {
 
 
 
+/**
+ * This function checks if the provided name is empty or if it already exists in the `contacts` array.
+ * 
+ * @param {string} name - The name to check
+ * 
+ * @returns {boolean} - Returns `true` if the name is invalid (either empty or already exists) - otherwise returns `false`
+ * 
+ */
+function isInvalidName(name) {
+  // Check if the name is empty
+  if (!name.trim()) {
+    alert('Name cannot be empty');
+    return true; // Indicate that the name is invalid
+  }
 
+  // Check if the name already exists 
+  const nameExists = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
+  if (nameExists) {
+    alert("A contact with this name already exists.");
+    document.getElementById('newContactName').value = ''; // Empty name filed
+    return true; // Indicate that the name already exists
+  }
 
+  return false; // Indicate that the name is valid and does not exist
+}
 
+/**
+ * Validates phone number contain 10 digits
+ * 
+ * @param {string} phone - The phone number to check
+ * 
+ * @returns {boolean} - Returns `true` if the phone number is invalid (either empty, contains non-numeric characters, or is not 10 digits) - otherwise, returns `false`
+ * 
+ */
+function isInvalidPhone(phone) {
+  // Check if the phone number is empty
+  if (!phone) {
+    alert('Phone number is required.');
+    return true; // Indicate that the phone number is invalid
+  }
+
+  // Check if the phone number contains only numeric characters
+  for (let i = 0; i < phone.length; i++) {
+    if (isNaN(phone[i])) {
+      alert('Phone number must contain only digits.');
+      document.getElementById('newContactPhone').value = '';
+      return true; // Indicate that the phone number is invalid
+    }
+  }
+
+  // Check if the phone number is exactly 10 digits
+  if (phone.length !== 10) {
+    alert('Phone number must be 10 digits long.');
+    document.getElementById('newContactPhone').value = '';
+    return true; // Indicate that the phone number is invalid
+  }
+
+  return false; // Indicate that the phone number is valid
+}
+
+/**
+ * Clears all form fields of 'Add Contact' popup.
+ * 
+ * This function sets the value of each input field in the 'Add Contact' form to an empty string.
+ * 
+ * It used to reset the form after adding a new contact or when closing the popup.
+ * 
+ * @returns {void} - This function does not return a value.
+ * 
+ */
+function ClearFormFields() {
+  document.getElementById('newContactName').value = '';
+  document.getElementById('newContactPhone').value = '';
+  document.getElementById('newContactAddress').value = '';
+  document.getElementById('newContactEmail').value = '';
+  document.getElementById('new-image-url').value = '';
+  document.getElementById('newContactMessage').value = '';
+}
 
 
 
 /**
- * Saves new added contact and updates the contact list by adding to array
+ * Saves a newly added contact and updates the contact list by adding it to the array
+ * 
+ * It also closes the "Add Contact" popup and clears the form fields.
+ * 
+ * @returns {void} - This function does not return a value.
+ * 
  */
 function saveNewContact() {
   // Geting new contact input values
@@ -325,6 +413,11 @@ function saveNewContact() {
   const imageUrl = document.getElementById('new-image-url').value.trim();
   const message = document.getElementById('newContactMessage').value.trim();
 
+
+  // Validate the name + phone
+  if (isInvalidName(name) || isInvalidPhone(phone)) {
+    return; // Stop if the name or phone is invalid 
+  }
 
   // Creating new contact
   const contact = {
@@ -345,25 +438,19 @@ function saveNewContact() {
 }
 
 
-/**
- * Clears all form fields in the 'Add Contact' popup
- */
-function ClearFormFields() {
-  document.getElementById('newContactName').value = '';
-  document.getElementById('newContactPhone').value = '';
-  document.getElementById('newContactAddress').value = '';
-  document.getElementById('newContactEmail').value = '';
-  document.getElementById('new-image-url').value = '';
-  document.getElementById('newContactMessage').value = '';
-}
 
 
 let currentEditingIndex; //Store index of the currently contact being edited
 
 /**
- * Show in the 'Edit Contact' popup the current contact details.
+ * Fill up the 'Edit Contact' popup with the details of the contact to be edited
  * 
- * @param {number} index - Index of the contact to be edited.
+ * the `currentEditingIndex` to track the contact being edited 
+ * 
+ * @param {number} index - The index of the contact in the `contacts` array to be edited.
+ * 
+ * @returns {void} - This function does not return a value.
+ * 
  */
 function editContact(index) {
   // Getting current contact value to the popup
@@ -378,8 +465,16 @@ function editContact(index) {
   openPopup('editContactModal'); // Open the edit popup
 }
 
+
 /**
- * Saves the changes made to existing contact.
+ * Saves the changes made to an existing contact - update contact info
+ * 
+ * This function retrieves the updated contact details from the 'Edit Contact' form fields, 
+ * updates the corresponding contact in the `contacts` array using the stored `currentEditingIndex`,
+ * and refreshes the contact list display. It also closes the 'Edit Contact' popup after saving.
+ * 
+ * @returns {void} - This function does not return a value.
+ * 
  */
 function saveEditedContact() {
   const index = currentEditingIndex; //Takes from 'edit contact' function index of  the currently contact being edited
@@ -391,6 +486,18 @@ function saveEditedContact() {
   const email = document.getElementById('editContactEmail').value.trim();
   const imageUrl = document.getElementById('edit-image-url').value.trim();
   const message = document.getElementById('editContactMessage').value.trim();
+
+
+  //Validate the name
+  if (contacts[index].name !== name && isInvalidName(name)) {
+    return; // Stop if the name of edited contact stays without change - Also stops  if the name invalid (empty / already exists) 
+  }
+
+  //Validate the phone number
+  if (isInvalidPhone(phone)) {
+    return; // Stop if the phone number is invalid 
+  }
+
 
   // Update the contact with new details based on his index
   contacts[index] = {
