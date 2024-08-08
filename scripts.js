@@ -28,7 +28,7 @@ const contacts = [
   },
   {
     imageUrl: "./images/gabriel_apereir.png",
-    name: "Heitor Verdifotos",
+    name: "Gabriel Apereir",
     phone: "8754566487",
     address: "257 Country Street",
     email: "gabriel.apereir@example.com",
