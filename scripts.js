@@ -87,32 +87,26 @@ function sortContactsByName(contactsToSort) {
   });
 }
 
+
 /**
  * Renders and updates the list of contacts in the HTML.
  * Creates list items (li) from the array and counts the number of contacts.
  *
  * @param {Array} contactsToRender - Contact array to render.
- * @param {boolean} [sortContacts=true] - Indicates if the contacts should be sorted.
  */
-function renderContacts(contactsToRender, sortContacts = true) {
+function renderContacts(contactsToRender) {
   const contactList = document.getElementById('contactList');
   contactList.innerHTML = ''; // Clear any existing contacts
 
-  if (sortContacts) {
-    // Sort the contacts before rendering if sortContacts is true
-    contactsToRender = sortContactsByName(contactsToRender);
-  }
+  // Sort the contacts before rendering
+  contactsToRender = sortContactsByName(contactsToRender);
 
   contactsToRender.forEach((contact, index) => {
     const liElem = document.createElement('li');
     // Hover effect for li
-    liElem.onmouseover = () => {
-      liElem.classList.add('bg-hover');
-    };
+    liElem.onmouseover = () => liElem.classList.add('bg-hover');
+    liElem.onmouseout = () => liElem.classList.remove('bg-hover');
 
-    liElem.onmouseout = () => {
-      liElem.classList.remove('bg-hover');
-    };
 
     liElem.className = 'contact-item';
     liElem.innerHTML = `
@@ -143,14 +137,18 @@ renderContacts(contacts);
 function searchContacts() {
   const searchValue = document.getElementById('searchInput').value.toLowerCase();
 
-  // Filter contacts based on the search input
-  const filteredContacts = contacts
-    .map((contact, index) => ({ contact, index })) // Preserve original index
-    .filter(({ contact }) => contact.name.toLowerCase().includes(searchValue));
+  // Filter contacts based on the search input and preserve original index
+  const filteredContacts = [];
+  contacts.forEach((contact, index) => {
+    if (contact.name.toLowerCase().includes(searchValue)) {
+      filteredContacts.push({ contact, index });
+    }
+  });
 
   // Render the filtered contacts without sorting, preserving the original indices
   renderFilteredContacts(filteredContacts);
 }
+
 
 /**
  * Renders filtered contacts, preserving the original indices.
@@ -164,13 +162,9 @@ function renderFilteredContacts(filteredContacts) {
   filteredContacts.forEach(({ contact, index }) => {
     const liElem = document.createElement('li');
     // Hover effect for li
-    liElem.onmouseover = () => {
-      liElem.classList.add('bg-hover');
-    };
+    liElem.onmouseover = () => liElem.classList.add('bg-hover');
+    liElem.onmouseout = () => liElem.classList.remove('bg-hover');
 
-    liElem.onmouseout = () => {
-      liElem.classList.remove('bg-hover');
-    };
 
     liElem.className = 'contact-item';
     liElem.innerHTML = `
@@ -266,14 +260,14 @@ function toggleMode() {
   btn.textContent = btn.textContent === "Dark Mode" ? "Color Mode" : "Dark Mode";
 
   // Update popups inner background 
-  const popupBg = document.querySelectorAll('.window-style');
+  const popupBg = document.querySelectorAll('.window-style'); // Returns array
   popupBg.forEach(element => element.classList.toggle('silverBg'));
 
   // Update popups outer background 
   const popupLight = document.querySelectorAll('.popup');
   popupLight.forEach(element => element.classList.toggle('gray'));
 
-  // Update popups outer background 
+  // Update font color of header and footer
   const header = document.querySelector('header');
   header.classList.toggle('white');
   const footer = document.querySelector('footer');
@@ -282,7 +276,7 @@ function toggleMode() {
 
 
 /**
- * Displays detailed information about a specific contact in popup
+ * Displays detailes information about a specific contact in popup
  * 
  * This function called by renderContacts func from INFO BTN
  * 
@@ -299,10 +293,10 @@ function showContactDetails(index) {
     </div>
   `;
 
-  // Display only contacts (the array) feilds that has data by adding it to div with class --> user-info 
-  const userInfo = container.querySelector('.user-info');
 
-  // Add contact details to the container
+  const userInfo = document.querySelector('.user-info');
+
+  // Add contact details to the container only contacts (the array) feilds that has data by adding it to div with class --> user-info
   if (contacts[index].name) userInfo.innerHTML += `<p><strong>Name:</strong> ${contacts[index].name}</p>`;
   if (contacts[index].phone) userInfo.innerHTML += `<p><strong>Phone:</strong> ${contacts[index].phone}</p>`;
   if (contacts[index].address) userInfo.innerHTML += `<p><strong>Address:</strong> ${contacts[index].address}</p>`;
@@ -469,9 +463,9 @@ function editContact(index) {
 /**
  * Saves the changes made to an existing contact - update contact info
  * 
- * This function retrieves the updated contact details from the 'Edit Contact' form fields, 
- * updates the corresponding contact in the `contacts` array using the stored `currentEditingIndex`,
- * and refreshes the contact list display. It also closes the 'Edit Contact' popup after saving.
+ * This function gets the new contact details from the 'Edit Contact' form
+ * Updates the contact in the contacts array at the index we are editing
+ * Refreshes the contact list display, and then closes the 'Edit Contact' popup.
  * 
  * @returns {void} - This function does not return a value.
  * 
